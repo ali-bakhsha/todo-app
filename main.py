@@ -3,7 +3,7 @@ import functions
 import time
 
 
-
+print("test")
 print(f"It is {time.strftime('%b %d , %Y : %H:%M:%S')}")
 todos = []
 # print("HI Hi")
