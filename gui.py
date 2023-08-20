@@ -1,17 +1,27 @@
-import functions
-#import  PySimpleGUI as sg
 import PySimpleGUI
+import functions
 
 lable = PySimpleGUI.Text("Type in a to-do")
-input_box = PySimpleGUI.InputText(tooltip="Enter a code")
-add_button = PySimpleGUI.Button("Add")
-exit_button = PySimpleGUI.Button("Exit")
+textbox = PySimpleGUI.InputText(tooltip="Enter a Text" , key = "todo")
+button = PySimpleGUI.Button("Add")
+exit = PySimpleGUI.Button("Exit")
+window = PySimpleGUI.Window("title",
+                            font=('Helvetica' , 20),
+                            layout=[[lable],[textbox , button], [exit]])
 
 
-window = PySimpleGUI.Window('File Zipper', layout=[ [lable], [input_box, add_button] ] )
+while True:
+    event , values= window.read()
+    match event:
+       case "Add":
+           todos = functions.get_todos()
+           print(todos)
+           todos.append(values['todo']+"\n")
+           print(todos)
+           functions.write_todos(todos)
 
-
-window.read()
+       case "Exit":
+           break;
+       case PySimpleGUI.WINDOW_CLOSED:
+           break
 window.close()
-
-
