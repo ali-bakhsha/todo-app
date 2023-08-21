@@ -1,7 +1,12 @@
 import PySimpleGUI
 import functions
 import time
+import os
 
+if not os.path.exists("todos.txt"):
+    with open("./files/todos.txt" , "w") as file:
+        pass
+# command: pyinstaller --onefile --windowed --clean gui.py
 PySimpleGUI.theme("Black")
 
 clock = PySimpleGUI.Text(key="clock")
